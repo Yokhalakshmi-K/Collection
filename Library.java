@@ -3,6 +3,7 @@ public class Library{
 	Map<String,Book> books = new HashMap<>();
 	Map<String,Member> members = new HashMap<>();
 	List<Transaction> transactions = new ArrayList<>();
+	Scanner sc = new Scanner(System.in);
 	public void addBook(Book book){
 		books.put(book.getId(),book);
 	}
@@ -32,9 +33,10 @@ public class Library{
 		}
 	}
 	public void listAllBooks(){
+		System.out.println("Book ID"+"\t\t"+"\tTitle\t\t"+"\t\tAuthor");
 		for(Book book : books.values()){
 			if(book.isAvailable()){
-				System.out.println(book);
+				System.out.println(book.getId()+"\t\t"+book.getTitle()+"\t\t"+book.getAuthor());
 			}
 		}
 	}
@@ -91,13 +93,25 @@ public class Library{
 			int choice = sc.nextInt();
 			switch(choice){
 				case 1:
-						lib.addBook(new Book("1", "The Great Gatsby", "F. Scott Fitzgerald"));
-						lib.addBook(new Book("2", "1984", "George Orwell"));
-						lib.addBook(new Book("3", "To Kill a Mockingbird", "Harper Lee"));
+						sc.nextLine();
+						System.out.println("Enter Book ID: ");
+       					bookId = sc.nextLine();
+						System.out.println("Enter Book Title: ");
+						String title = sc.nextLine();
+						System.out.println("Enter Book Author: ");
+						String author = sc.nextLine();
+						Book book = new Book(bookId, title, author);
+						lib.addBook(book);
+						System.out.println("Book added successfully.");
 						break;
 				case 2:
-						 lib.addMember(new Member("1", "Alice"));
-						 lib.addMember(new Member("2", "Bob"));
+						 sc.nextLine();
+						 System.out.println("Enter the member id");
+						 memberId = sc.nextLine();
+						 System.out.println("Enter the member name");
+						 String name = sc.nextLine();
+						 Member member = new Member(memberId,name);
+						 lib.addMember(member);
 						 break;
 				case 3:
 						lib.listAllBooks();

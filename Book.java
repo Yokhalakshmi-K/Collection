@@ -32,6 +32,6 @@ public class Book{
 		return borrowCount;
 	}
 	public String toString(){
-		return id+" "+title+" "+author+" "+isAvailable;
+		return id+"\t"+title+"\t"+author+" "+isAvailable;
 	}
 }
